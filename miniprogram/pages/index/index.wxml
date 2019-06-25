@@ -1,51 +1,53 @@
 <!--index.wxml-->
 <view class="container">
 
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-    ></button>
+  <!-- 用户地址 -->
+  <view class="useraddress">
     <view>
-      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+      <button plain ="{{plain}}">这里显示用户所在的地址信息</button>
     </view>
   </view>
 
 
-  <!-- 上传图片 -->
-  <view class="uploader">
-    <view class="uploader-text" bindtap="doUpload">
-      <text>上传图片</text>
+  <!-- 日期 -->
+  <view class="date">
+<view class="btn-area">
+  <view class="body-view">
+    <text>{{text}}</text>
+    <button bindtap="date">日期</button>
+  </view>
+</view>
+  </view>
+
+
+  <!-- 温度 -->
+<text class = 'temperature'>30℃</text>
+
+  <!-- 天气细节 -->
+<text class = 'weatherinfo'>晴 湿度10% 大气压强 1003hpa</text>
+
+  <!-- 更多 -->
+  <button class = 'moreinfo'bindtap='moreinfo'>更多</button>
+
+  <!-- 生活提示 -->
+<view class="page">
+
+    <view class="page__bd page__bd_spacing">
+
+        <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder"> 穿衣提示</view></view>
+            <view class="weui-flex__item"><view class="placeholder">紫外线指数</view></view>
+        </view>
+                <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+        </view>
+                <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+        </view>
     </view>
-    <view class="uploader-container" wx:if="{{imgUrl}}">
-      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
-    </view>
-  </view>
 
-
-  <!-- 操作数据库 -->
-  <view class="uploader">
-    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
-      <text>前端操作数据库</text>
-    </navigator>
-  </view>
-
-  <!-- 新建云函数 -->
-  <view class="uploader">
-    <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
-      <text>快速新建云函数</text>
-    </navigator>
-  </view>
-
-  <!-- 云调用 -->
-  <view class="uploader">
-    <navigator url="../openapi/openapi" open-type="navigate" class="uploader-text">
-      <text>云调用</text>
-    </navigator>
-  </view>
-
-
+<view class="weui-footer">demo 1.0</view>
+</view>
 </view>
