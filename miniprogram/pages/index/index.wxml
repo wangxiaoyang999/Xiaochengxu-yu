@@ -1,27 +1,17 @@
-<!--index.wxml-->
-<view class="container">
-
   <!-- 用户地址 -->
-  <view class="useraddress">
-    <view>
+<view class="useraddress">
       <button plain ="{{plain}}">这里显示用户所在的地址信息</button>
-    </view>
-  </view>
+</view>
 
 
   <!-- 日期 -->
   <view class="date">
-<view class="btn-area">
-  <view class="body-view">
-    <text>{{text}}</text>
-    <button bindtap="date">日期</button>
-  </view>
-</view>
+    <text class='date'>日期</text>
   </view>
 
 
   <!-- 温度 -->
-<text class = 'temperature'>30℃</text>
+<text class = 'temperature'>30℃\n</text>
 
   <!-- 天气细节 -->
 <text class = 'weatherinfo'>晴 湿度10% 大气压强 1003hpa</text>
@@ -49,5 +39,4 @@
     </view>
 
 <view class="weui-footer">demo 1.0</view>
-</view>
 </view>

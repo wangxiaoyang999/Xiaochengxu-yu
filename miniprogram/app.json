@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/me/me",
+    "pages/aqi/aqi"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -17,12 +19,12 @@
         "iconPath": "icons/weather_unuse.png",
         "selectedIconPath": "icons/weather_use.png"
     },{
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/aqi/aqi",
       "text": "空气质量",
       "iconPath":"icons/aqi_unuse.png",
       "selectedIconPath":"icons/aqi_use.png"
     },{
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/me/me",
       "text": "我的信息",
       "iconPath": "icons/me_unuse.png",
       "selectedIconPath": "icons/me_use.png"
