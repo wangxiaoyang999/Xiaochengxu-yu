@@ -29,5 +29,10 @@
       "iconPath": "icons/me_unuse.png",
       "selectedIconPath": "icons/me_use.png"
     }]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于天气查询"
+    }
   }
 }
