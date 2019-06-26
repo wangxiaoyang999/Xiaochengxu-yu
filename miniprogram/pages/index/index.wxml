@@ -1,6 +1,7 @@
   <!-- 用户地址 -->
 <view class="useraddress">
-      <button plain ="{{plain}}">占位符
+      <button plain ="{{plain}}">
+      <text>{{newLocation}}</text>
       </button>
 </view>
 
@@ -15,7 +16,7 @@
 <text class = 'temperature'>30℃\n</text>
 
   <!-- 天气细节 -->
-<text class = 'weatherinfo'>晴 湿度10% 大气压强 1003hpa</text>
+<text class = 'weatherinfo'>{{weatherInfo}}</text>
 
   <!-- 更多 -->
   <button class = 'moreinfo'bindtap='moreinfo'>更多</button>
