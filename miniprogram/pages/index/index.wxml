@@ -1,6 +1,6 @@
   <!-- 用户地址 -->
 <view class="useraddress">
-      <button plain ="{{plain}}">1
+      <button plain ="{{plain}}">占位符
       </button>
 </view>
 

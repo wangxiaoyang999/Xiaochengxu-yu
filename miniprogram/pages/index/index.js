@@ -6,7 +6,7 @@ Page({
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: '',
+    requestResult: ''
   },
 
   onLoad: function() {
