@@ -1,0 +1,38 @@
+/**index.wxss**/
+
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.date{
+  text-align: center;
+}
+.temperature{
+  font-size: 250rpx;
+  margin-top: 5rpx;
+  text-align:center;
+}
+
+.weatherinfo{
+  font-size: 30rpx;
+  text-align:center;
+}
+
+.moreinfo{
+  width: 18%;
+  margin-top: 5rpx;
+  background-color: #4dae71;
+  color: #000000;
+}
+
+.placeholder{
+    margin: 5px;
+    padding: 0 10px;
+    text-align:center;
+    background-color: #EBEBEB;
+    height: 4.6em;
+    line-height: 2.3em;
+    color: #cfcfcf;
+}

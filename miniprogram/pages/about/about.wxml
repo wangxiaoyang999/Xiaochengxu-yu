@@ -1,0 +1,16 @@
+<view class='about'> 
+<text>关于</text>
+</view>
+
+<view class='logo_view'>
+<image src="/icons/logo.png" class='logo'>
+</image>
+</view>
+
+<view class='text_1'>
+<text class='text_1_t'>天气查询\n小程序</text>
+</view>
+
+<view class='team_name'>
+<text>组长：王枭阳\n前端&文档：许荣榕\n后端：王翔，吴亚尧</text>
+</view>

@@ -1,0 +1,50 @@
+  <!-- 用户地址 -->
+<view class="useraddress">
+      <button plain ="{{plain}}">
+      <text>{{newLocation}}</text>
+      </button>
+</view>
+
+
+  <!-- 日期 -->
+  <view class="date">
+    <text class='date'>日期</text>
+  </view>
+
+
+  <view class="city">
+     <text class="word">{{nowInfo.location.name}}</text>
+  </view>
+
+  <view class="weather">
+     <text class="word">{{nowInfo.now.text}}  </text>
+  </view>
+
+  <view class="temperature">
+     <text class="word">{{nowInfo.now.temperature}}℃</text>
+  </view>
+
+  <!-- 更多 -->
+  <button class = 'moreinfo'bindtap='moreinfo'>更多</button>
+
+  <!-- 生活提示 -->
+<view class="page">
+
+    <view class="page__bd page__bd_spacing">
+
+        <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder"> 穿衣提示</view></view>
+            <view class="weui-flex__item"><view class="placeholder">紫外线指数</view></view>
+        </view>
+                <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+        </view>
+                <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+        </view>
+    </view>
+
+<view class="weui-footer">demo 1.0</view>
+</view>
