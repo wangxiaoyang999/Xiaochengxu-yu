@@ -8,10 +8,6 @@ Page({
   data: {
     weatherInfo: {},
     newLocation: {},
-    lifeInfo: {},
-    nowInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onReady: function () {
     //初始化加载数据
@@ -39,3 +35,7 @@ Page({
             }
           })
         }
+      }
+    })
+  },
+})
