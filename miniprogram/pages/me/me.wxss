@@ -1,7 +1,7 @@
 .UCenter-bg {
   background-color: green;
   background-size: cover;
-  height: 550rpx;
+  height: 600rpx;
   display: flex;
   justify-content: center;
   padding-top: 40rpx;
@@ -22,4 +22,29 @@
   z-index: 99;
   mix-blend-mode: screen;  
   height: 100rpx;   
+}
+
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+ 
+.line1{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis; 
+}
+ 
+.open-data-userAvatarUrl {
+  width: 220rpx;
+  height: 220rpx;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 40rpx auto;
+}
+.open-data-userNickName{
+  max-width: 400rpx;
+  display:block;
+  font-size: 30rpx;
 }

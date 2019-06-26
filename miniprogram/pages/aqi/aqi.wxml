@@ -1,13 +1,13 @@
-  <!-- 用户地址 -->
-<view class="useraddress">
-      <button plain ="{{plain}}">这里显示用户所在的地址信息</button>
-</view>
-
-
-  <!-- 日期 -->
+  
   <view class="date">
-    <text class='date'>日期</text>
+  {{time}}日
   </view>
+  <!-- 用户地址 -->
+  <view class="city">
+     <text class="word">{{nowInfo.location.name}}</text>
+  </view>
+  <!-- 日期 -->
+
 
   <!--数字的空气质量-->
 

@@ -1,31 +1,31 @@
+  <!-- 日期 -->
+  <view class="date">
+  {{time}}日
+  </view>
+
+
   <!-- 用户地址 -->
-<view class="useraddress">
+<!-- <view class="useraddress">
       <button plain ="{{plain}}">
       <text>{{newLocation}}</text>
       </button>
-</view>
-
-
-  <!-- 日期 -->
-  <view class="date">
-    <text class='date'>日期</text>
-  </view>
-
+</view> -->
 
   <view class="city">
      <text class="word">{{nowInfo.location.name}}</text>
-  </view>
-
-  <view class="weather">
-     <text class="word">{{nowInfo.now.text}}  </text>
   </view>
 
   <view class="temperature">
      <text class="word">{{nowInfo.now.temperature}}℃</text>
   </view>
 
+  <view class="weather">
+     <text class="word">{{nowInfo.now.text}}  </text>
+  </view>
+
+
+
   <!-- 更多 -->
-  <button class = 'moreinfo'bindtap='moreinfo'>更多</button>
 
   <!-- 生活提示 -->
 <view class="page">

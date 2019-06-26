@@ -4,11 +4,28 @@ var util_weather = require('../api/util.js')
 var formatLocation = util_weather.formatLocation
 const app = getApp()
 
+function formatTime(date) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  return [[year, month].map(formatNumber).join('年'), day].map(formatNumber).join('月')
+}
+
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+module.exports = {
+  formatTime: formatTime
+}  
+
 Page({
   data: {
     weatherInfo: {},
     newLocation: {},
-    nowInfo:{}
+    nowInfo:{},
+    date:{}
   },
   onReady: function () {
     //初始化加载数据
@@ -39,4 +56,12 @@ Page({
       }
     })
   },
+  onLoad: function () {
+    // 调用函数时，传入new Date()参数，返回值是日期和时间  
+    var time = formatTime(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据  
+    this.setData({
+      time: time
+    });
+  }  
 })

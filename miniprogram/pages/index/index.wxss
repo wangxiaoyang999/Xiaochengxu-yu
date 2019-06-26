@@ -11,15 +11,17 @@ page {
 }
 .temperature{
   font-size: 250rpx;
-  margin-top: 5rpx;
   text-align:center;
 }
 
-.weatherinfo{
-  font-size: 30rpx;
+.city{
+  font-size: 50rpx;
   text-align:center;
 }
-
+.weather{
+  font-size: 50rpx;
+  text-align:center;
+}
 .moreinfo{
   width: 18%;
   margin-top: 5rpx;

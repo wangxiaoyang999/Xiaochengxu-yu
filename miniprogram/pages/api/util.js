@@ -1,3 +1,12 @@
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+module.exports = {
+  formatTime: formatTime
+}
+
 function formatTime(time) {
   if (typeof time !== 'number' || time < 0) {
     return time

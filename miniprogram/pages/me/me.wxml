@@ -1,10 +1,12 @@
 <scroll-view scroll-y class="scrollPage">
   <view class="UCenter-bg">
-
-
-    <image src="/images/logo.png" class="png" mode="widthFix"></image>
-
-
+<view style='margin:10rpx auto;text-align:center'>
+  <open-data class="open-data-userAvatarUrl" type="userAvatarUrl"></open-data>    
+</view>
+ 
+<view style='margin:40rpx auto;text-align:center;display:flex;justify-content: center;'>
+<open-data class="open-data-userNickName line1" type="userNickName" lang="zh_CN"></open-data>
+</view>
     <view class="text-xl">天气查询
       <text class="text-df">v1.0</text>
     </view>

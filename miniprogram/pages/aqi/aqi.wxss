@@ -23,3 +23,8 @@
     line-height: 2.3em;
     color: #cfcfcf;
 }
+
+.city{
+  font-size: 50rpx;
+  text-align:center;
+}
