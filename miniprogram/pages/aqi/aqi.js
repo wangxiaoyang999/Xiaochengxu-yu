@@ -40,6 +40,18 @@ Page({
           newLocation: newLocation
         })
         if (!self.data.nowInfo.now) {
+          //初始化获取 当前的天气状况
+          wx.request({
+            url: 'https://api.seniverse.com/v3/weather/now.json?key=fdw9qkun1btvenxt&location=' + newLocation + '&language=zh-Hans&unit=c',
+            success: function (result) {
+              self.setData({
+                nowInfo: result.data.results[0]
+              })
+            },
+            fail: function ({ errMsg }) {
+              console.log('request fail', errMsg)
+            }
+          })
         }
       }
     })
