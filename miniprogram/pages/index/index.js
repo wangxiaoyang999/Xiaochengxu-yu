@@ -52,15 +52,16 @@ Page({
           me.setData({
             city:city.indexOf('市') > -1 ? city.substr(0,city.indexOf('市')) :city
           });
-        }else(
+        }else{
           me.setData({
             city:'获取失败'
           });
-          }
-          }
-          })
-      },
-
+        }
+      }
+    })
+  },
+  
+  
   onGetUserInfo: function(e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
