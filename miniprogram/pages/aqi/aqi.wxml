@@ -1,4 +1,4 @@
-  
+      <!-- 日期 -->
   <view class="date">
   {{time}}日
   </view>
@@ -6,16 +6,12 @@
   <view class="city">
      <text class="word">{{nowInfo.location.name}}</text>
   </view>
-  <!-- 日期 -->
-
-
   <!--数字的空气质量-->
-
   <view class='aqi_num'>
      <text class='aqi_num'>37</text>
   </view>
 
-
+  <!-- 空气质量（文字） -->
   <view class='aqi_status' wx:if="{{true}}">
       <button class='color_good'>
       <text class='status'>优</text>

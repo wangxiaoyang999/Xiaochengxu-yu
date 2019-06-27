@@ -3,7 +3,7 @@
 var util_weather = require('../api/util.js')
 var formatLocation = util_weather.formatLocation
 const app = getApp()
-
+//规范时间格式
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1

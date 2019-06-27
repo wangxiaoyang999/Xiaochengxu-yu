@@ -42,7 +42,7 @@
                             </view>
                             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                         </navigator>
-                        <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="go_about">
+                        <navigator url ="/pages/about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="go_about">
                             <view class="weui-cell__bd weui-cell_primary">
                                 <view>关于</view>
                             </view>
