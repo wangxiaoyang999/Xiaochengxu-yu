@@ -18,7 +18,7 @@
       </button>
   </view>
 
-
+<!-- flex的块（undo） -->
   <view class="page">
 
     <view class="page__bd page__bd_spacing">

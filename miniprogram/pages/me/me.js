@@ -6,12 +6,12 @@ Page({
   data: {
     
   },
-
-  go_about:function(){
-    wx.navigateTo({
-      url: '/pages/about/about',
-    })
-  },
+// 跳转功能，暂时用不到
+  // go_about:function(){
+  //   wx.navigateTo({
+  //     url: '/pages/about/about',
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -13,7 +13,8 @@
 
   <!-- 城市名称，温度，天气 -->
   <view class="city">
-     <text class="word">{{nowInfo.location.name}}</text>
+     <button bindtap='GoToSearch'>
+     <text class="word">{{nowInfo.location.name}}</text></button>
   </view>
 
   <view class="temperature">

@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/me/me",
     "pages/about/about",
-    "pages/aqi/aqi"
+    "pages/aqi/aqi",
+    "pages/search/search"
     
   ],
   "window": {

@@ -63,5 +63,10 @@ Page({
     this.setData({
       time: time
     });
-  }  
+  },
+  GoToSearch:function(param){
+    wx.navigateTo({
+      url: '/pages/search/search',
+    })
+  }
 })
