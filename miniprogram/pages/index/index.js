@@ -11,6 +11,13 @@ function formatTime(date) {
   return [[year, month].map(formatNumber).join('年'), day].map(formatNumber).join('月')
 }
 
+function formatTime_1(date) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  return [[year, month].map(formatNumber).join('-'), day].map(formatNumber).join('-')
+}
+
 function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -25,7 +32,8 @@ Page({
     weatherInfo: {},
     newLocation: {},
     nowInfo:{},
-    date:{}
+    date:{},
+    index:{},
   },
   onReady: function () {
     //初始化加载数据
@@ -44,6 +52,7 @@ Page({
           wx.request({
             url: 'https://api.seniverse.com/v3/weather/now.json?key=fdw9qkun1btvenxt&location=' + newLocation + '&language=zh-Hans&unit=c',
             success: function (result) {
+              console.log(result.data),
               self.setData({
                 nowInfo: result.data.results[0]
               })
@@ -51,7 +60,24 @@ Page({
             fail: function ({ errMsg }) {
               console.log('request fail', errMsg)
             }
-          })
+          },
+          wx.request({
+            url: 'https://xurongrong.com:443/index',
+            method:'POST',
+            data:{
+              lat: res.latitude,
+              lon: res.longitude
+            },
+            header:{
+              'content-type':'application/json'
+            },
+            success: function(res){
+              console.log(res.data.data),
+              self.setData({
+                index: res.data.data
+              })
+            }
+          }))
         }
       }
     })
@@ -59,9 +85,11 @@ Page({
   onLoad: function () {
     // 调用函数时，传入new Date()参数，返回值是日期和时间  
     var time = formatTime(new Date());
+    var time_1 = formatTime_1(new Date());
     // 再通过setData更改Page()里面的data，动态更新页面的数据  
     this.setData({
-      time: time
+      time: time,
+      time_1:time_1
     });
   },
   GoToSearch:function(param){

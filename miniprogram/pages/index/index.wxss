@@ -36,5 +36,6 @@ page {
     background-color: #EBEBEB;
     height: 4.6em;
     line-height: 2.3em;
-    color: #cfcfcf;
+    color: #000000;
 }
+

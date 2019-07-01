@@ -31,16 +31,22 @@
     <view class="page__bd page__bd_spacing">
 
         <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder"> 穿衣提示</view></view>
-            <view class="weui-flex__item"><view class="placeholder">紫外线指数</view></view>
+            <view class="weui-flex__item"><view class="placeholder">
+            <text>{{index.liveIndex[time_1][1].name}}\n{{index.liveIndex[time_1][1].status}}</text></view></view>
+            <view class="weui-flex__item"><view class="placeholder">
+            <text>{{index.liveIndex[time_1][0].name}}\n{{index.liveIndex[time_1][0].status}}</text></view></view>
         </view>
                 <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
-            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+            <view class="weui-flex__item"><view class="placeholder">
+            <text>{{index.liveIndex[time_1][2].name}}\n{{index.liveIndex[time_1][2].status}}</text></view></view>
+            <view class="weui-flex__item"><view class="placeholder">
+            <text>{{index.liveIndex[time_1][3].name}}\n{{index.liveIndex[time_1][3].status}}</text></view></view>
         </view>
                 <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
-            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+            <view class="weui-flex__item"><view class="placeholder">
+            <text>{{index.liveIndex[time_1][4].name}}\n{{index.liveIndex[time_1][4].status}}</text></view></view>
+            <view class="weui-flex__item"><view class="placeholder">
+            <text>{{index.liveIndex[time_1][5].name}}\n{{index.liveIndex[time_1][5].status}}</text></view></view>
         </view>
     </view>
 
