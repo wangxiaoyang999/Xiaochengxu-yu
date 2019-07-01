@@ -26,7 +26,6 @@ function formatNumber(n) {
 module.exports = {
   formatTime: formatTime
 }  
-
 Page({
   data: {
     weatherInfo: {},
@@ -35,10 +34,13 @@ Page({
     date:{},
     index:{},
   },
-  onReady: function () {
+  onShow:function () {
     //初始化加载数据
     var self = this
+    var lat_ask = app.globalData.lat_ask;
+    var lat_lon = app.globalData.lat_lon;
     //获取定位信息 经纬度
+    if (app.globalData.lat_ask == ''){
     wx.getLocation({
       success: function (res) {
         //初始化【北京】经纬度  location=39.93:116.40（格式是 纬度:经度，英文冒号分隔） 
@@ -81,8 +83,45 @@ Page({
         }
       }
     })
+    }
+    else{
+      var newLocation = '39.93:116.40';
+      newLocation = app.globalData.lat_ask + ":" + app.globalData.lon_ask
+      self.setData({
+        newLocation: newLocation
+      })
+      wx.request({
+        url: 'https://api.seniverse.com/v3/weather/now.json?key=fdw9qkun1btvenxt&location=' + newLocation + '&language=zh-Hans&unit=c',
+        success: function (result) {
+          console.log(result.data),
+            self.setData({
+              nowInfo: result.data.results[0]
+            })
+        },
+        fail: function ({ errMsg }) {
+          console.log('request fail', errMsg)
+        }
+      },
+        wx.request({
+          url: 'https://xurongrong.com:443/index',
+          method: 'POST',
+          data: {
+            lat: app.globalData.lat_ask,
+            lon: app.globalData.lon_ask
+          },
+          header: {
+            'content-type': 'application/json'
+          },
+          success: function (res) {
+            console.log(res.data.data),
+              self.setData({
+                index: res.data.data
+              })
+          }
+        }))
+    }
   },
-  onLoad: function () {
+  onLoad: function (options) {
     // 调用函数时，传入new Date()参数，返回值是日期和时间  
     var time = formatTime(new Date());
     var time_1 = formatTime_1(new Date());
@@ -93,8 +132,27 @@ Page({
     });
   },
   GoToSearch:function(param){
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/search/search',
+    })
+  },
+  GoToLocal:function(){
+    app.globalData.lat_ask=''
+    app.globalData.lon_ask=''
+    wx.switchTab({
+      url: '/pages/me/me',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+    wx.showModal({
+      content: '恢复定位成功，请选择您要查询的内容，更多功能请参看“我的”页面。',
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          console.log('确定')
+        }
+      }
     })
   }
 })

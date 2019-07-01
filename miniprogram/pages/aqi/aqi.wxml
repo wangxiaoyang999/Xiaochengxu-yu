@@ -4,17 +4,23 @@
   </view>
   <!-- 用户地址 -->
   <view class="city">
-     <text class="word">{{nowInfo.location.name}}</text>
+    <button bindtap='GoToSearch'>
+     <text class="word">{{nowInfo.location.name}}</text></button>
   </view>
+  <button style="background-image:url(/images/location.png);" bindtap='GoToLocal' class='location_button'></button>
   <!--数字的空气质量-->
   <view class='aqi_num'>
-     <text class='aqi_num'>37</text>
+     <text class='aqi_num'>{{aqi.aqi.value}}</text>
   </view>
 
   <!-- 空气质量（文字） -->
   <view class='aqi_status' wx:if="{{true}}">
       <button class='color_good'>
-      <text class='status'>优</text>
+      <text class='status' wx:if = "{{aqi.aqi.value}}<=50">优</text>
+      <text class='status' wx:elif = "{{aqi.aqi.value}}>50&&{{aqi.aqi.value}}<=100">良</text>
+      <text class='status' wx:elif = "{{aqi.aqi.value}}>100&&{{aqi.aqi.value}}<=150">轻度污染</text>
+      <text class='status' wx:elif = "{{aqi.aqi.value}}>150&&{{aqi.aqi.value}}<=200">中度污染</text>
+      <text class='status' wx:elif = "{{aqi.aqi.value}}>200">重度污染</text>
       </button>
   </view>
 
@@ -24,20 +30,20 @@
     <view class="page__bd page__bd_spacing">
 
         <view class="weui-flex">
-        <view class="weui-flex__item"><view class="placeholder">空气质量排名</view></view>
-            <view class="weui-flex__item"><view class="placeholder">运动建议</view></view>
+        <view class="weui-flex__item"><view class="placeholder"><text>一氧化碳\n{{aqi.aqi.co}}</text></view></view>
+            <view class="weui-flex__item"><view class="placeholder"><text>二氧化氮\n{{aqi.aqi.no2}}</text></view></view>
         </view>
         <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder">CO2</view></view>
-            <view class="weui-flex__item"><view class="placeholder">NO</view></view>
+            <view class="weui-flex__item"><view class="placeholder"><text>臭氧\n {{aqi.aqi.o3}}</text></view></view>
+            <view class="weui-flex__item"><view class="placeholder"><text>pm10\n {{aqi.aqi.pm10}}</text></view></view>
         </view>
         <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder">O3</view></view>
-            <view class="weui-flex__item"><view class="placeholder">PM2.5</view></view>
+            <view class="weui-flex__item"><view class="placeholder"><text>二氧化硫\n {{aqi.aqi.so2}}</text></view></view>
+            <view class="weui-flex__item"><view class="placeholder"><text>PM2.5\n {{aqi.aqi.so2}}</text></view></view>
         </view>
         <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
-            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+            <view class="weui-flex__item"><view class="placeholder"><text>全国排名\n {{aqi.aqi.rank}}</text></view></view>
+            <view class="weui-flex__item"><view class="placeholder"><text>区域名称\n {{aqi.aqi.cityName}}</text></view></view>
         </view>
      </view>
   </view>

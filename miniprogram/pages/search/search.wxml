@@ -1,20 +1,20 @@
-<view class="page">
-    <view class="page__bd">
-        <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-                <view class="weui-search-bar__box">
-                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
-                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-                        <icon type="clear" size="14"></icon>
-                    </view>
-                </view>
-                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-                    <icon class="weui-icon-search" type="search" size="14"></icon>
-                    <view class="weui-search-bar__text">请输入城市名称</view>
-                </label>
-            </view>
-            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
-        </view>
-    </view>
-</view>
+<text class='up_1'>请输入您想要查询的地址（城市）</text>
+<form bindsubmit="formSubmit">
+    <!--地址描述输入框,示例：北京市海淀区彩和坊路海淀西大街74号-->
+    <input style="border:1px solid #000;" name="geocoder"></input>
+    <!--提交表单数据-->
+    <button form-type="submit" class="weui-btn" type="default" bindtap="openAlert">天气查询</button>
+</form>
+<!--地图容器-->
+<!--longitude及latitude为设置为调转到指定地址位置，默认不显示-->
+<!--form表单-->
+<!-- <map id="myMap"
+    markers="{{markers}}"
+    style="width:100%;height:300px;"
+    longitude="{{poi.longitude}}"
+    latitude="{{poi.latitude}}"
+    scale='16' show-location>
+</map> -->
+<!--地址描述经纬度展示-->
+<!-- <view>地址纬度：{{poi.latitude}}</view>
+<view>地址经度：{{poi.longitude}}</view> -->

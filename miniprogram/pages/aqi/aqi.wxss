@@ -7,11 +7,14 @@
   margin-top: 5rpx;
   text-align:center;
 }
-
+.city{
+  font-size: 50rpx;
+  text-align:center;
+}
 .color_good{
-  background-color: green;
+  background-color: lightskyblue;
   color: white;
-  width: 20%
+  width: 40%
 }
 
 .placeholder{
@@ -21,10 +24,19 @@
     background-color: #EBEBEB;
     height: 4.6em;
     line-height: 2.3em;
-    color: #cfcfcf;
+    color: #000000;
 }
 
 .city{
   font-size: 50rpx;
   text-align:center;
+}
+
+.location_button{
+  width: 38rpx;
+  height: 38rpx;
+  text-align: center;
+  background-size: 38rpx 38rpx;
+  background-repeat:no-repeat;
+  border:none;
 }

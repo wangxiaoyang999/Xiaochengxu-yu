@@ -39,3 +39,11 @@ page {
     color: #000000;
 }
 
+.location_button{
+  width: 38rpx;
+  height: 38rpx;
+  text-align: center;
+  background-size: 38rpx 38rpx;
+  background-repeat:no-repeat;
+  border:none;
+}
