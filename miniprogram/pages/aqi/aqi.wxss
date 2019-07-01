@@ -1,0 +1,30 @@
+.date{
+  text-align: center;
+}
+
+.aqi_num{
+  font-size: 250rpx;
+  margin-top: 5rpx;
+  text-align:center;
+}
+
+.color_good{
+  background-color: green;
+  color: white;
+  width: 20%
+}
+
+.placeholder{
+    margin: 5px;
+    padding: 0 10px;
+    text-align:center;
+    background-color: #EBEBEB;
+    height: 4.6em;
+    line-height: 2.3em;
+    color: #cfcfcf;
+}
+
+.city{
+  font-size: 50rpx;
+  text-align:center;
+}

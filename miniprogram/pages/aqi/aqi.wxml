@@ -1,0 +1,43 @@
+      <!-- 日期 -->
+  <view class="date">
+  {{time}}日
+  </view>
+  <!-- 用户地址 -->
+  <view class="city">
+     <text class="word">{{nowInfo.location.name}}</text>
+  </view>
+  <!--数字的空气质量-->
+  <view class='aqi_num'>
+     <text class='aqi_num'>37</text>
+  </view>
+
+  <!-- 空气质量（文字） -->
+  <view class='aqi_status' wx:if="{{true}}">
+      <button class='color_good'>
+      <text class='status'>优</text>
+      </button>
+  </view>
+
+<!-- flex的块（undo） -->
+  <view class="page">
+
+    <view class="page__bd page__bd_spacing">
+
+        <view class="weui-flex">
+        <view class="weui-flex__item"><view class="placeholder">空气质量排名</view></view>
+            <view class="weui-flex__item"><view class="placeholder">运动建议</view></view>
+        </view>
+        <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder">CO2</view></view>
+            <view class="weui-flex__item"><view class="placeholder">NO</view></view>
+        </view>
+        <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder">O3</view></view>
+            <view class="weui-flex__item"><view class="placeholder">PM2.5</view></view>
+        </view>
+        <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+            <view class="weui-flex__item"><view class="placeholder">XXX</view></view>
+        </view>
+     </view>
+  </view>
