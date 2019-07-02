@@ -3,26 +3,25 @@
 var util_weather = require('../api/util.js')
 var formatLocation = util_weather.formatLocation
 const app = getApp()
-//规范时间格式
+//规范时间格式XXXX年XX月XX
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
   var day = date.getDate()
   return [[year, month].map(formatNumber).join('年'), day].map(formatNumber).join('月')
 }
-
+//规范时间格式XXXX-XX-XX
 function formatTime_1(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
   var day = date.getDate()
   return [[year, month].map(formatNumber).join('-'), day].map(formatNumber).join('-')
 }
-
+// 规范数字格式
 function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-
 module.exports = {
   formatTime: formatTime
 }  
@@ -35,7 +34,7 @@ Page({
     index:{},
   },
   onShow:function () {
-    //初始化加载数据
+    //页面进入加载数据
     var self = this
     var lat_ask = app.globalData.lat_ask;
     var lat_lon = app.globalData.lat_lon;
@@ -63,6 +62,7 @@ Page({
               console.log('request fail', errMsg)
             }
           },
+          //获取生活信息
           wx.request({
             url: 'https://xurongrong.com:443/index',
             method:'POST',
@@ -84,12 +84,14 @@ Page({
       }
     })
     }
+    // 通过全局变量定义
     else{
       var newLocation = '39.93:116.40';
       newLocation = app.globalData.lat_ask + ":" + app.globalData.lon_ask
       self.setData({
         newLocation: newLocation
       })
+      // 获取温度和位置
       wx.request({
         url: 'https://api.seniverse.com/v3/weather/now.json?key=fdw9qkun1btvenxt&location=' + newLocation + '&language=zh-Hans&unit=c',
         success: function (result) {
@@ -102,6 +104,7 @@ Page({
           console.log('request fail', errMsg)
         }
       },
+      // 获取生活信息
         wx.request({
           url: 'https://xurongrong.com:443/index',
           method: 'POST',
@@ -131,11 +134,13 @@ Page({
       time_1:time_1
     });
   },
+  // 跳转到搜索页
   GoToSearch:function(param){
     wx.redirectTo({
       url: '/pages/search/search',
     })
   },
+  // 恢复定位
   GoToLocal:function(){
     app.globalData.lat_ask=''
     app.globalData.lon_ask=''

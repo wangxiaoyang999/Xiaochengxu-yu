@@ -1,4 +1,6 @@
+<!-- 静态文本 -->
 <text class='up_1'>请输入您想要查询的地址（城市）</text>
+<!-- 地址输入表单 -->
 <form bindsubmit="formSubmit">
     <!--地址描述输入框,示例：北京市海淀区彩和坊路海淀西大街74号-->
     <input style="border:1px solid #000;" name="geocoder"></input>

@@ -51,6 +51,7 @@ Page({
           lat:latitude,
           
         });
+        // 绑定全局变量
         getApp().globalData.lat_ask = _this.data.lat
         getApp().globalData.lon_ask = _this.data.lon
         console.log(app.globalData.lat_ask + "+" + app.globalData.lon_ask);
@@ -62,6 +63,7 @@ Page({
         console.log(res);
       }
     })
+    // 跳转到me界面（防止跳转异常）
     wx.reLaunch({
       url: '/pages/me/me',
       success: function (e) {
@@ -76,30 +78,33 @@ Page({
       }
     })
   },
-  showInput: function () {
-    this.setData({
-      inputShowed: true
-    });
-  },
-  hideInput: function () {
-    this.setData({
-      address_value: "",
-      inputShowed: false
-    });
-  },
-  clearInput: function () {
-    this.setData({
-      address_value: ""
-    });
-  },
-  inputTyping: function (e) {
-    this.setData({
-      address_value: e.detail.value
-    });
-  },
+  ////给搜索框用的，先删去
+  // showInput: function () {
+  //   this.setData({
+  //     inputShowed: true
+  //   });
+  // },
+  // hideInput: function () {
+  //   this.setData({
+  //     address_value: "",
+  //     inputShowed: false
+  //   });
+  // },
+  // clearInput: function () {
+  //   this.setData({
+  //     address_value: ""
+  //   });
+  // },
+  // inputTyping: function (e) {
+  //   this.setData({
+  //     address_value: e.detail.value
+  //   });
+  // },
+  //
+  //跳转me
   openAlert: function () {
     wx.showModal({
-      content: '查询成功，请选择您要查询的内容，更多功能请参看“我的”页面。',
+      content: '查询成功，请选择您要查询的内容，更多功能请参看本页面。',
       showCancel: false,
       success: function (res) {
         if (res.confirm) {
