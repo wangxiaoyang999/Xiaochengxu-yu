@@ -40,7 +40,7 @@ Page({
         self.setData({
           newLocation: newLocation
         })
-        if (!self.data.nowInfo.now) {
+        if (1) {
           //初始化获取 当前的天气状况
           wx.request({
             url: 'https://api.seniverse.com/v3/weather/now.json?key=fdw9qkun1btvenxt&location=' + newLocation + '&language=zh-Hans&unit=c',

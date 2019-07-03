@@ -17,7 +17,7 @@
      <text class="word">{{nowInfo.location.name}}</text></button>
   </view>
   <button style="background-image:url(/images/location.png);" bindtap='GoToLocal' class='location_button'></button>
-
+  <button bindtap='readinfo'>读天气</button>
   <view class="temperature">
      <text class="word">{{nowInfo.now.temperature}}℃</text>
   </view>

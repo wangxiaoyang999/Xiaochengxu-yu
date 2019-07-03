@@ -1,0 +1,15 @@
+.recorder{
+  width: 128rpx;
+  height: 128rpx;
+  text-align: center;
+}
+.recorder_image{
+  width: 128rpx;
+  height: 128rpx;
+}
+.recorder_view{
+  position: fixed;
+  bottom: 50rpx;
+  text-align: center;
+  left:42%
+}

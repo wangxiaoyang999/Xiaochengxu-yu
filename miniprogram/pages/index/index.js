@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+var token, IMEI, filePath
 var util_weather = require('../api/util.js')
 var formatLocation = util_weather.formatLocation
 const app = getApp()
@@ -32,6 +33,7 @@ Page({
     nowInfo:{},
     date:{},
     index:{},
+    IMEI:''
   },
   onShow:function () {
     //页面进入加载数据
@@ -48,7 +50,7 @@ Page({
         self.setData({
           newLocation: newLocation
         })
-        if (!self.data.nowInfo.now) {
+        if (1) {
           //初始化获取 当前的天气状况
           wx.request({
             url: 'https://api.seniverse.com/v3/weather/now.json?key=fdw9qkun1btvenxt&location=' + newLocation + '&language=zh-Hans&unit=c',
@@ -124,6 +126,8 @@ Page({
         }))
     }
   },
+
+
   onLoad: function (options) {
     // 调用函数时，传入new Date()参数，返回值是日期和时间  
     var time = formatTime(new Date());
@@ -133,6 +137,20 @@ Page({
       time: time,
       time_1:time_1
     });
+    var that = this
+    wx.getSystemInfo({
+
+      success: function (res) {
+
+        console.log(res)
+
+        IMEI = res.SDKVersion
+
+        console.log(IMEI)
+
+      }
+
+    })
   },
   // 跳转到搜索页
   GoToSearch:function(param){
@@ -158,6 +176,114 @@ Page({
           console.log('确定')
         }
       }
+    })
+  },
+
+  readinfo:function(){
+    var that = this;
+    var grant_type = "client_credentials";
+
+    var appKey = "X230lr6YX2g7hrGgvGgz16kb";
+
+    var appSecret = "UEP0d5CgDrcOPmulfEG6cu44fL7xULzA";
+
+    // var url = "https://openapi.baidu.com/oauth/2.0/token" + "grant_type=" + grant_type + "&client_id=" + appKey + "&client_secret=" + appSecret
+
+    var url = "https://openapi.baidu.com/oauth/2.0/token"
+
+    wx.request({
+
+      url: url,
+
+      data: {
+
+        grant_type: grant_type,
+
+        client_id: appKey,
+
+        client_secret: appSecret
+
+      },
+
+      method: "GET",
+
+      header: {
+
+        'content-type': 'application/json' // 默认值
+
+      },
+
+      success: function (res) {
+
+        console.log(res.data)
+
+        token = res.data.access_token
+
+        var text = that.data.nowInfo.location.name + ',' + that.data.nowInfo.now.text + ',' + that.data.nowInfo.now.temperature + '摄氏度，' + that.data.index.liveIndex[formatTime_1(new Date())][0].desc;
+
+        var tex = encodeURI(text);//转换编码url_encode UTF8编码
+
+        var tok = token;
+
+        var cuid = IMEI;
+
+        var ctp = 1;
+
+        var lan = "zh";    // zh表示中文
+
+        // 字符编码
+
+        var spd = 5;  // 表示朗读的语速，9代表最快，1是最慢（撩妹请用2，绕口令请用9）
+
+        var url = "https://tsn.baidu.com/text2audio?tex=" + tex + "&lan=" + lan + "&cuid=" + cuid + "&ctp=" + ctp + "&tok=" + tok + "&spd=" + spd
+
+        wx.downloadFile({
+
+          url: url,
+
+          success: function (res) {
+
+            console.log(res)
+
+            filePath = res.tempFilePath;
+
+            // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+
+            if (res.statusCode === 200) {
+
+              wx.playVoice({
+
+                filePath: res.tempFilePath
+
+              })
+
+            }
+            const innerAudioContext = wx.createInnerAudioContext()
+
+            innerAudioContext.autoplay = true
+
+            innerAudioContext.src = encodeURI(filePath)
+
+            innerAudioContext.onPlay(() => {
+
+              console.log('开始播放')
+
+            })
+
+            innerAudioContext.onError((res) => {
+
+              console.log(res.errMsg)
+
+              console.log(res.errCode)
+
+            })
+
+          }
+
+        })
+
+      }
+
     })
   }
 })

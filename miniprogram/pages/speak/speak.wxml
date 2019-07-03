@@ -1,0 +1,8 @@
+<view class='recorder_view'>
+<button class='recorder' bindtap='play'>
+<image class='recorder_image'src='/images/recorder.png' mode="aspectFit"></image>
+</button>
+</view>
+<button bindtap='tts'>1</button>
+<button bindtap='cancel'>2</button>
+<button bindtap='play'>3</button>
