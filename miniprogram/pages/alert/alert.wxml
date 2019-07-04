@@ -1,0 +1,2 @@
+<text wx:if="{{!alert.alert}}" class="safe">暂无预警信息</text>
+<text wx:else class="danger">{{alert.alert[0].title}}\n\n{{alert.alert[0].content}}\n{{alert.alert[1].title}}\n\n{{alert.alert[1].content}}\n{{alert.alert[2].title}}\n\n{{alert.alert[2].content}}</text>

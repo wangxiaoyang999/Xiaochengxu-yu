@@ -14,17 +14,27 @@
   <!-- 城市名称，温度，天气 -->
   <view class="city">
      <button bindtap='GoToSearch'>
-     <text class="word">{{nowInfo.location.name}}</text></button>
+     <text class="word">{{condition.city.name}}</text></button>
   </view>
   <button style="background-image:url(/images/location.png);" bindtap='GoToLocal' class='location_button'></button>
   <button bindtap='readinfo'>读天气</button>
+
   <view class="temperature">
-     <text class="word">{{nowInfo.now.temperature}}℃</text>
+     <text class="word">{{condition.condition.temp}}℃</text>
   </view>
 
-  <view class="weather">
-     <text class="word">{{nowInfo.now.text}}  </text>
-  </view>
+  <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder_1">
+            <text class="wheather_info">{{condition.condition.condition}}</text></view></view>
+            <view class="weui-flex__item"><view class="placeholder_1">
+              <view class="nowinfo">
+    <image wx:if="{{!condition.condition.icon}}"  bindtap="bindViewTap" class="nowinfo-icon" src="../../images/icon/catFoot.jpg" background-size="cover"></image>
+    <block wx:else>
+      <image class="nowinfo-icon" src="../../images/logo/W{{condition.condition.icon}}.png"
+      background-size="cover"></image>
+    </block>
+  </view></view></view>
+        </view>
 
   <!-- 生活提示 -->
 <view class="page">

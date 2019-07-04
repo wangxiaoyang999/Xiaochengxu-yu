@@ -9,7 +9,7 @@
 <open-data class="open-data-userNickName line1" type="userNickName" lang="zh_CN"></open-data>
 </view>
     <view class="text-xl">天气查询
-      <text class="text-df">v1.0</text>
+      <text class="text-df">v3.0</text>
     </view>
     <view class="margin-top-sm">
     </view>
@@ -26,21 +26,9 @@
                 <view class="weui-media-box weui-media-box_small-appmsg">
                     <view class="weui-cells weui-cells_in-small-appmsg">
                     <!-- 菜单 -->
-                        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                        <navigator url="/pages/alert/alert" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                             <view class="weui-cell__bd weui-cell_primary">
-                                <view>每日推送设置</view>
-                            </view>
-                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                        </navigator>
-                        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view>预警提醒设置</view>
-                            </view>
-                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                        </navigator>
-                        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view>其他设置</view>
+                                <view>预警提醒</view>
                             </view>
                             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                         </navigator>

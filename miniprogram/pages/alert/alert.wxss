@@ -1,0 +1,10 @@
+.safe{
+  font-size: 75rpx;
+  text-align: center;
+}
+
+.danger{
+  font-size: 40rpx;
+  text-align: center;
+  color: red;
+}

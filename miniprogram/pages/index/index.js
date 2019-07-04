@@ -25,69 +25,78 @@ function formatNumber(n) {
 }
 module.exports = {
   formatTime: formatTime
-}  
+}
 Page({
   data: {
     weatherInfo: {},
     newLocation: {},
-    nowInfo:{},
-    date:{},
-    index:{},
-    IMEI:''
+    pname: {},
+    date: {},
+    index: {},
+    condition: {},
+    location: {},
+    temp: {},
+    name: {},
+    IMEI: ''
   },
-  onShow:function () {
+  onShow: function () {
     //页面进入加载数据
     var self = this
     var lat_ask = app.globalData.lat_ask;
     var lat_lon = app.globalData.lat_lon;
     //获取定位信息 经纬度
-    if (app.globalData.lat_ask == ''){
-    wx.getLocation({
-      success: function (res) {
-        //初始化【北京】经纬度  location=39.93:116.40（格式是 纬度:经度，英文冒号分隔） 
-        var newLocation = '39.93:116.40';
-        if (res) { newLocation = res.latitude + ":" + res.longitude }
-        self.setData({
-          newLocation: newLocation
-        })
-        if (1) {
-          //初始化获取 当前的天气状况
-          wx.request({
-            url: 'https://api.seniverse.com/v3/weather/now.json?key=fdw9qkun1btvenxt&location=' + newLocation + '&language=zh-Hans&unit=c',
-            success: function (result) {
-              console.log(result.data),
-              self.setData({
-                nowInfo: result.data.results[0]
-              })
+    if (app.globalData.lat_ask == '') {
+      wx.getLocation({
+        success: function (res) {
+          //初始化【北京】经纬度  location=39.93:116.40（格式是 纬度:经度，英文冒号分隔） 
+          var newLocation = '39.93:116.40';
+          if (res) { newLocation = res.latitude + ":" + res.longitude }
+          self.setData({
+            newLocation: newLocation
+          })
+          if (1) {
+            //初始化获取 当前的天气状况
+            wx.request({
+              url: 'https://xurongrong.com:443/condition',
+              method: 'POST',
+              data: {
+                lat: res.latitude,
+                lon: res.longitude
+              },
+              header: {
+                'content-type': 'application/json'
+              },
+              success: function (res) {
+                console.log(res.data.data),
+                  self.setData({
+                    condition: res.data.data
+                  })
+              },
             },
-            fail: function ({ errMsg }) {
-              console.log('request fail', errMsg)
-            }
-          },
-          //获取生活信息
-          wx.request({
-            url: 'https://xurongrong.com:443/index',
-            method:'POST',
-            data:{
-              lat: res.latitude,
-              lon: res.longitude
-            },
-            header:{
-              'content-type':'application/json'
-            },
-            success: function(res){
-              console.log(res.data.data),
-              self.setData({
-                index: res.data.data
-              })
-            }
-          }))
+              //获取生活信息
+              wx.request({
+                url: 'https://xurongrong.com:443/index',
+                method: 'POST',
+                data: {
+                  lat: res.latitude,
+                  lon: res.longitude
+                },
+                header: {
+                  'content-type': 'application/json'
+                },
+                success: function (res) {
+                  console.log(res.data.data),
+                    self.setData({
+                      index: res.data.data
+                    })
+                }
+              }))
+          }
         }
-      }
-    })
+      })
     }
     // 通过全局变量定义
-    else{
+    else {
       var newLocation = '39.93:116.40';
       newLocation = app.globalData.lat_ask + ":" + app.globalData.lon_ask
       self.setData({
@@ -95,18 +104,23 @@ Page({
       })
       // 获取温度和位置
       wx.request({
-        url: 'https://api.seniverse.com/v3/weather/now.json?key=fdw9qkun1btvenxt&location=' + newLocation + '&language=zh-Hans&unit=c',
-        success: function (result) {
-          console.log(result.data),
+        url: 'https://xurongrong.com:443/condition',
+        method: 'POST',
+        data: {
+          lat: app.globalData.lat_ask,
+          lon: app.globalData.lon_ask
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data.data),
             self.setData({
-              nowInfo: result.data.results[0]
+              condition: res.data.data
             })
         },
-        fail: function ({ errMsg }) {
-          console.log('request fail', errMsg)
-        }
       },
-      // 获取生活信息
+        // 获取生活信息
         wx.request({
           url: 'https://xurongrong.com:443/index',
           method: 'POST',
@@ -135,7 +149,7 @@ Page({
     // 再通过setData更改Page()里面的data，动态更新页面的数据  
     this.setData({
       time: time,
-      time_1:time_1
+      time_1: time_1
     });
     var that = this
     wx.getSystemInfo({
@@ -153,20 +167,20 @@ Page({
     })
   },
   // 跳转到搜索页
-  GoToSearch:function(param){
+  GoToSearch: function (param) {
     wx.redirectTo({
       url: '/pages/search/search',
     })
   },
   // 恢复定位
-  GoToLocal:function(){
-    app.globalData.lat_ask=''
-    app.globalData.lon_ask=''
+  GoToLocal: function () {
+    app.globalData.lat_ask = ''
+    app.globalData.lon_ask = ''
     wx.switchTab({
       url: '/pages/me/me',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
     })
     wx.showModal({
       content: '恢复定位成功，请选择您要查询的内容，更多功能请参看“我的”页面。',
@@ -179,7 +193,11 @@ Page({
     })
   },
 
-  readinfo:function(){
+  readinfo: function () {
+      wx.showLoading({
+        title: '正在读天气',
+        mask: true
+      });
     var that = this;
     var grant_type = "client_credentials";
 
@@ -219,7 +237,7 @@ Page({
 
         token = res.data.access_token
 
-        var text = that.data.nowInfo.location.name + ',' + that.data.nowInfo.now.text + ',' + that.data.nowInfo.now.temperature + '摄氏度，' + that.data.index.liveIndex[formatTime_1(new Date())][0].desc;
+        var text = that.data.condition.city.name + ',' + that.data.condition.condition.condition + ',实时气温' + that.data.condition.condition.temp + '摄氏度，' + that.data.condition.condition.tips;
 
         var tex = encodeURI(text);//转换编码url_encode UTF8编码
 
@@ -267,6 +285,7 @@ Page({
             innerAudioContext.onPlay(() => {
 
               console.log('开始播放')
+              
 
             })
 
@@ -275,8 +294,16 @@ Page({
               console.log(res.errMsg)
 
               console.log(res.errCode)
+              
 
             })
+            innerAudioContext.onEnded(() => {
+
+              console.log('结束播放')
+              wx.hideLoading()
+
+            })
+            
 
           }
 
@@ -285,5 +312,8 @@ Page({
       }
 
     })
+    
+    
   }
+  
 })

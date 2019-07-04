@@ -12,7 +12,31 @@
   text-align:center;
 }
 .color_good{
-  background-color: lightskyblue;
+  background-color: lightgreen;
+  color: white;
+  width: 20%
+}
+
+.color_fine{
+  background-color: yellow;
+  color: black;
+  width: 20%
+}
+
+.color_light{
+  background-color: orange;
+  color: white;
+  width: 40%
+}
+
+.color_middle{
+  background-color: red;
+  color: white;
+  width: 40%
+}
+
+.color_heavy{
+  background-color: brown;
   color: white;
   width: 40%
 }

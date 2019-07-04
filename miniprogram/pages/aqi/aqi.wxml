@@ -5,7 +5,7 @@
   <!-- 用户地址 -->
   <view class="city">
     <button bindtap='GoToSearch'>
-     <text class="word">{{nowInfo.location.name}}</text></button>
+     <text class="word">{{aqi.city.pname}}</text></button>
   </view>
   <button style="background-image:url(/images/location.png);" bindtap='GoToLocal' class='location_button'></button>
     <button bindtap='readinfo'>读天气</button>
@@ -16,13 +16,22 @@
 
   <!-- 空气质量（文字） -->
   <view class='aqi_status' wx:if="{{true}}">
-      <button class='color_good'>
-      <text class='status' wx:if = "{{aqi.aqi.value}}<=50">优</text>
-      <text class='status' wx:elif = "{{aqi.aqi.value}}>50&&{{aqi.aqi.value}}<=100">良</text>
-      <text class='status' wx:elif = "{{aqi.aqi.value}}>100&&{{aqi.aqi.value}}<=150">轻度污染</text>
-      <text class='status' wx:elif = "{{aqi.aqi.value}}>150&&{{aqi.aqi.value}}<=200">中度污染</text>
-      <text class='status' wx:elif = "{{aqi.aqi.value}}>200">重度污染</text>
+      <button class='color_good'  wx:if = "{{aqi.aqi.value<50}}">
+      <text class='status'>优</text>
       </button>
+      <button class='color_fine'  wx:elif = "{{aqi.aqi.value>50}}&&{{aqi.aqi.value<=100}}">
+      <text class='status'>良</text>
+      </button>
+      <button class='color_light' wx:elif = "{{aqi.aqi.value>100}}&&{{aqi.aqi.value<=150}}">
+      <text class='status' >轻度污染</text>
+      </button>
+      <button class='color_middle' wx:elif = "{{aqi.aqi.value>150}}&&{{aqi.aqi.value<=200}}">
+      <text class='status'>中度污染</text>
+      </button>
+      <button class='color_heavy' wx:elif = "{{aqi.aqi.value>200}}">
+      <text class='status'>重度污染</text>
+      </button>
+      
   </view>
 
 <!-- flex的块（undo） -->
@@ -40,7 +49,7 @@
         </view>
         <view class="weui-flex">
             <view class="weui-flex__item"><view class="placeholder"><text>二氧化硫\n {{aqi.aqi.so2}}</text></view></view>
-            <view class="weui-flex__item"><view class="placeholder"><text>PM2.5\n {{aqi.aqi.so2}}</text></view></view>
+            <view class="weui-flex__item"><view class="placeholder"><text>PM2.5\n {{aqi.aqi.pm25}}</text></view></view>
         </view>
         <view class="weui-flex">
             <view class="weui-flex__item"><view class="placeholder"><text>全国排名\n {{aqi.aqi.rank}}</text></view></view>

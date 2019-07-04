@@ -4,7 +4,8 @@
     "pages/me/me",
     "pages/about/about",
     "pages/search/search",
-    "pages/aqi/aqi"
+    "pages/aqi/aqi",
+    "pages/alert/alert"
     
   ],
   "window": {

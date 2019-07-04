@@ -24,7 +24,6 @@ module.exports = {
 Page({
   data: {
     weatherInfo: {},
-    newLocation: {},
     nowInfo: {},
     date: {}
   },
@@ -36,25 +35,7 @@ Page({
     wx.getLocation({
       success: function (res) {
         //初始化【北京】经纬度  location=39.93:116.40（格式是 纬度:经度，英文冒号分隔） 
-        var newLocation = '39.93:116.40';
-        if (res) { newLocation = res.latitude + ":" + res.longitude }
-        self.setData({
-          newLocation: newLocation
-        })
         if (1) {
-          //初始化获取 当前的天气状况
-          wx.request({
-            url: 'https://api.seniverse.com/v3/weather/now.json?key=fdw9qkun1btvenxt&location=' + newLocation + '&language=zh-Hans&unit=c',
-            success: function (result) {
-              console.log(result.data),
-                self.setData({
-                  nowInfo: result.data.results[0]
-                })
-            },
-            fail: function ({ errMsg }) {
-              console.log('request fail', errMsg)
-            }
-          },
             wx.request({
               url: 'https://xurongrong.com:443/aqi',
               method: 'POST',
@@ -71,29 +52,12 @@ Page({
                     aqi: res.data.data
                   })
               }
-            }))
+            })
         }
       }
     })
     }
     else{
-      var newLocation = '39.93:116.40';
-      newLocation = app.globalData.lat_ask + ":" + app.globalData.lon_ask
-      self.setData({
-        newLocation: newLocation
-      })
-      wx.request({
-        url: 'https://api.seniverse.com/v3/weather/now.json?key=fdw9qkun1btvenxt&location=' + newLocation + '&language=zh-Hans&unit=c',
-        success: function (result) {
-          console.log(result.data),
-            self.setData({
-              nowInfo: result.data.results[0]
-            })
-        },
-        fail: function ({ errMsg }) {
-          console.log('request fail', errMsg)
-        }
-      },
         wx.request({
           url: 'https://xurongrong.com:443/aqi',
           method: 'POST',
@@ -110,7 +74,7 @@ Page({
                 aqi: res.data.data
               })
           }
-        }))
+        })
     }
   },
   onLoad: function () {
@@ -146,6 +110,10 @@ Page({
     })
   },
     readinfo: function () {
+    wx.showLoading({
+      title: '正在读天气',
+      mask: true
+    });
     var that = this;
     var grant_type = "client_credentials";
 
@@ -241,6 +209,12 @@ Page({
               console.log(res.errMsg)
 
               console.log(res.errCode)
+
+            })
+            innerAudioContext.onEnded(() => {
+
+              console.log('结束播放')
+              wx.hideLoading()
 
             })
 
