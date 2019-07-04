@@ -8,6 +8,7 @@
      <text class="word">{{nowInfo.location.name}}</text></button>
   </view>
   <button style="background-image:url(/images/location.png);" bindtap='GoToLocal' class='location_button'></button>
+    <button bindtap='readinfo'>读天气</button>
   <!--数字的空气质量-->
   <view class='aqi_num'>
      <text class='aqi_num'>{{aqi.aqi.value}}</text>
