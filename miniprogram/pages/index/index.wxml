@@ -23,6 +23,7 @@
      <text class="word">{{condition.condition.temp}}℃</text>
   </view>
 
+  <!-- 天气信息与icon -->
   <view class="weui-flex">
             <view class="weui-flex__item"><view class="placeholder_1">
             <text class="wheather_info">{{condition.condition.condition}}</text></view></view>
@@ -61,5 +62,5 @@
         </view>
     </view>
 
-<view class="weui-footer">demo 1.0</view>
+<view class="weui-footer">3.0</view>
 </view>

@@ -4,14 +4,14 @@ var token, IMEI, filePath
 var util_weather = require('../api/util.js')
 var formatLocation = util_weather.formatLocation
 const app = getApp()
-
+// 规范时间格式
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
   var day = date.getDate()
   return [[year, month].map(formatNumber).join('年'), day].map(formatNumber).join('月')
 }
-
+// 规范时间格式
 function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -86,7 +86,7 @@ Page({
     })
   },
   GoToSearch: function (param) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/search/search',
     })
   },

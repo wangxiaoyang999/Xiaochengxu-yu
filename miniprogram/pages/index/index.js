@@ -168,7 +168,7 @@ Page({
   },
   // 跳转到搜索页
   GoToSearch: function (param) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/search/search',
     })
   },
@@ -192,12 +192,13 @@ Page({
       }
     })
   },
-
+// 读天气
   readinfo: function () {
       wx.showLoading({
         title: '正在读天气',
         mask: true
       });
+      // 获取token
     var that = this;
     var grant_type = "client_credentials";
 
@@ -251,7 +252,7 @@ Page({
 
         // 字符编码
 
-        var spd = 5;  // 表示朗读的语速，9代表最快，1是最慢（撩妹请用2，绕口令请用9）
+        var spd = 5;  // 表示朗读的语速，9代表最快，1是最慢
 
         var url = "https://tsn.baidu.com/text2audio?tex=" + tex + "&lan=" + lan + "&cuid=" + cuid + "&ctp=" + ctp + "&tok=" + tok + "&spd=" + spd
 
@@ -265,7 +266,7 @@ Page({
 
             filePath = res.tempFilePath;
 
-            // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+            // 服务器响应数据，响应内容写入文件
 
             if (res.statusCode === 200) {
 
